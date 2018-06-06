@@ -15,7 +15,8 @@ class Die:
 	def roll(self):
 		self.face = rand.randrange(1,7)
 		self.rollhistory.append(self.face)
-		Die.allRolls.append("Die "+self.name+" - Roll #"+str(self.rollct)+": "+str(self.face))
+		Die.allRolls.append("Die "+self.name+" - Roll #"+ \
+			str(self.rollct)+": "+str(self.face))
 
 		return
 
@@ -47,7 +48,7 @@ class Die:
 
 	@staticmethod
 	def printDictionary(freq):
-		print("\n****************************************\nFrequency Map of Rolled Doubles\n****************************************\n")
+		print("\n"+"*"*40+"\nFrequency Map of Rolled Doubles\n"+"*"*40+"\n")
 		for x in freq:
 			print("Face value of '"+str(x)+"': "+str(freq[x]))
 
@@ -58,7 +59,8 @@ def main():
 	resp = input("Enter how many attempts you'd like to try to get doubles: ")
 	tryForDoubles = int(re.search("\d+",resp).group(0))
 
-	print("Let's see how many doubles we can get in "+str(tryForDoubles)+" rolls of both dice...")
+	print("Let's see how many doubles we can get in "+ \
+		str(tryForDoubles)+" rolls of both dice...")
 	a = Die("A")
 	b = Die("B")
 
@@ -69,12 +71,14 @@ def main():
 		b.roll()
 
 		if a.getFace() == b.getFace():
-			doubles.append("Doubles rolled at attempt #"+str(x)+"\t Face value: "+str(a.getFace()))
+			doubles.append("Doubles rolled at attempt #"+str(x)+ \
+				"\t Face value: "+str(a.getFace()))
 
 	print("Total of "+str(len(doubles))+" doubles in "+str(tryForDoubles)+" attempts.")
 
 	if len(doubles) > tryForDoubles//10:
-		if re.search(input("There are a significant number of doubles, would you still like to print them all?"),"y"):
+		if re.search(input("There are a significant number of doubles, " + \
+			"would you still like to print them all?"),"y"):
 			for x in doubles:
 				print(x)
 	else:
